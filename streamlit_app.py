@@ -34,8 +34,8 @@ if st.sidebar.checkbox("Show advanced options"):
         sorted(sanitized_features),
         default_control_features,
     )
-#else:
-#    features = get_random_features(feature_names, seed)
+else:
+    features = ['Cell 5']
     # Don't let the user pick feature values to control.
 #    control_features = default_control_features
 
