@@ -29,7 +29,7 @@ else:
 
 # Insert user-controlled values from sliders into the feature vector.
     
-st.sidebar.slider('Time', 0, 100, 50, 5)
+#st.sidebar.slider('Time', 0, 100, 50, 5)
 
 st.sidebar.title("Note")
 st.sidebar.write(
