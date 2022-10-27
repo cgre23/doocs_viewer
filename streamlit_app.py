@@ -32,7 +32,7 @@ if st.sidebar.checkbox("Show advanced options"):
     control_features = st.sidebar.multiselect(
         "Control which features?",
         ['Cell 1', 'Cell 2'],
-        ['Cell 3']],
+        ['Cell 3'],
     )
 else:
     features = ['Cell 5']
