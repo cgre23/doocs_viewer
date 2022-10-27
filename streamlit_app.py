@@ -16,7 +16,7 @@ st.title("DOOCS Viewer")
 
 st.sidebar.title("Settings")
 
-uploaded_file = st.sidebar.file_uploader("Choose a file", type=["csv","xlsx","xls"])
+uploaded_file = st.sidebar.file_uploader("Choose a file", type=["pkl"])
 if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_pickle(uploaded_file)
