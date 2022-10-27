@@ -21,7 +21,7 @@ if st.sidebar.checkbox("Show advanced options"):
     control_features = st.sidebar.multiselect(
         "Control which features?",
         ['Cell 1', 'Cell 2'],
-        ['Cell 3'],
+        ['Cell 1'],
     )
 else:
     # Don't let the user pick feature values to control.
@@ -29,7 +29,7 @@ else:
 
 # Insert user-controlled values from sliders into the feature vector.
     
-#st.sidebar.slider('Time', 0, 100, 50, 5)
+st.sidebar.slider('Time', 0, 100, 50, 5)
 
 st.sidebar.title("Note")
 st.sidebar.write(
