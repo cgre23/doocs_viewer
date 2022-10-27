@@ -19,8 +19,8 @@ default_control_features = ["Young", "Smiling", "Male"]
 if st.sidebar.checkbox("Show advanced options"):
     # Let the user pick which features to control with sliders.
     control_features = st.sidebar.multiselect(
-        "Control which features?",
-        ['Cell 1', 'Cell 2'],
+        "Exclude which cells?",
+        ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5'],
         ['Cell 1'],
     )
 else:
@@ -50,7 +50,6 @@ animation = px.scatter(data_frame=gapminder_df,
           title = 'World Life Expectancy and Wealth 1952 - 2007',
           labels = {'gdpPercap': 'Wealth', 
                    'lifeExp' : 'Life expectancy'},
-          log_x = True,
           range_y = [20,95],
           hover_name = 'country',
           animation_frame='year',
