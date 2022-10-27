@@ -31,13 +31,13 @@ if st.sidebar.checkbox("Show advanced options"):
     # Let the user pick which features to control with sliders.
     control_features = st.sidebar.multiselect(
         "Control which features?",
-        sorted(sanitized_features),
-        default_control_features,
+        ['Cell 1', 'Cell 2'],
+        ['Cell 3']],
     )
 else:
     features = ['Cell 5']
     # Don't let the user pick feature values to control.
-#    control_features = default_control_features
+    control_features = default_control_features
 
 # Insert user-controlled values from sliders into the feature vector.
     
