@@ -1,5 +1,6 @@
 import plotly.express as px
 import streamlit as st
+import pickle
 
 #import the data available in plotly.express
 gapminder_df = px.data.gapminder()
