@@ -1,38 +1,33 @@
-from collections import namedtuple
-import altair as alt
-import math
-import pandas as pd
+import plotly.express as px
 import streamlit as st
 
-"""
-# Welcome to Streamlit!
+#import the data available in plotly.express
+gapminder_df = px.data.gapminder()
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:
+animation_title = '<p style="font-family:Arial Bold; color:royalblue; font-size: 30px;"> Animated & Interactive Data Visualization</p>'
+sub_title1 = '<p style="font-family:Arial Bold Italic; color:royalblue; font-size: 20px;">This animation shows world life expectancy and wealth (GDP per capita) evolution from 1952 to 2007</p>'
+sub_title2 = '<p style="font-family:Arial Bold Italic; color:royalblue; font-size: 15px;">Source: https://www.gapminder.org/data/</p>'
 
-If you have any questions, check out our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
+st.set_page_config(layout='wide')
+st.markdown(animation_title, unsafe_allow_html=True)
+st.markdown(sub_title1, unsafe_allow_html=True)
+st.markdown(sub_title2, unsafe_allow_html=True)
 
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
+# Animation year by year basis
 
+animation = px.scatter(data_frame=gapminder_df,
+          x= 'gdpPercap',
+          y = 'lifeExp',
+          size= 'pop',
+          color = 'continent',
+          title = 'World Life Expectancy and Wealth 1952 - 2007',
+          labels = {'gdpPercap': 'Wealth', 
+                   'lifeExp' : 'Life expectancy'},
+          log_x = True,
+          range_y = [20,95],
+          hover_name = 'country',
+          animation_frame='year',
+          height=650,          
+          size_max=100)
 
-#with st.echo(code_location='below'):
-total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
-num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
-
-Point = namedtuple('Point', 'x y')
-data = []
-
-points_per_turn = total_points / num_turns
-
-for curr_point_num in range(total_points):
-    curr_turn, i = divmod(curr_point_num, points_per_turn)
-    angle = (curr_turn + 1) * 2 * math.pi * i / points_per_turn
-    radius = curr_point_num / total_points
-    x = radius * math.cos(angle)
-    y = radius * math.sin(angle)
-    data.append(Point(x, y))
-
-st.altair_chart(alt.Chart(pd.DataFrame(data), height=500, width=500)
-                .mark_circle(color='#0068c9', opacity=0.5)
-                .encode(x='x:Q', y='y:Q'))
+st.plotly_chart(animation, use_container_width=True)
