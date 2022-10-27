@@ -5,6 +5,7 @@ import pandas as pd
 
 #import the data available in plotly.express
 gapminder_df = px.data.gapminder()
+dataframe = pd.read_pickle('doocs_BPMS_20221021_0619_0647.pkl')
 
 st.set_page_config(
     page_title="DOOCS Viewer3", page_icon="⬇", layout="centered"
