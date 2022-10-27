@@ -19,15 +19,6 @@ st.sidebar.title("Features")
 default_control_features = ["Young", "Smiling", "Male"]
 
 if st.sidebar.checkbox("Show advanced options"):
-    # Randomly initialize feature values.
-    features = ['Cell 1', 'Cell 2']
-
-    # Some features are badly calibrated and biased. Removing them
-    block_list = ["Cell 9 Chicane", "Cell 17 Chicane"]
-    sanitized_features = [
-        feature for feature in features if feature not in block_list
-    ]
-
     # Let the user pick which features to control with sliders.
     control_features = st.sidebar.multiselect(
         "Control which features?",
@@ -35,7 +26,6 @@ if st.sidebar.checkbox("Show advanced options"):
         ['Cell 3'],
     )
 else:
-    features = ['Cell 5']
     # Don't let the user pick feature values to control.
     control_features = default_control_features
 
