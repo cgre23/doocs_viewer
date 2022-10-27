@@ -9,12 +9,10 @@ st.set_page_config(
 )
 
 st.title("DOOCS Viewer")
-"""This demo demonstrates  using [Nvidia's Progressive Growing of GANs](https://research.nvidia.com/publication/2017-10_Progressive-Growing-of) and 
-Shaobo Guan's [Transparent Latent-space GAN method](https://blog.insightdatascience.com/generating-custom-photo-realistic-faces-using-ai-d170b1b59255) 
-for tuning the output face's characteristics. For more information, check out the tutorial on [Towards Data Science](https://towardsdatascience.com/building-machine-learning-apps-with-streamlit-667cef3ff509)."""
+"""This demo demonstrates SASE2 orbit visualization using DOOCS HIST data"""
 
 
-st.sidebar.title("Features")
+st.sidebar.title("Settings")
 # If the user doesn't want to select which features to control, these will be used.
 default_control_features = ["Young", "Smiling", "Male"]
 
@@ -39,6 +37,7 @@ st.sidebar.write(
      """
 )
 
+st.sidebar.caption("Developed by: Christian Grech (DESY, MXL)")
 st.sidebar.caption(f"Streamlit version `{st.__version__}`")
 
 # Animation year by year basis
