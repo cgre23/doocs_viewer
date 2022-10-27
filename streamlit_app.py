@@ -31,6 +31,12 @@ else:
     
 st.sidebar.slider('Time', 0, 100, 50, 5)
 
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+    # Can be used wherever a "file-like" object is accepted:
+    dataframe = pd.read_csv(uploaded_file)
+    st.write(dataframe)
+
 st.sidebar.title("Note")
 st.sidebar.write(
     """The app is still in development.
