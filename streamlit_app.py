@@ -1,6 +1,7 @@
 import plotly.express as px
 import streamlit as st
-import pickle
+import pandas as pd
+
 
 #import the data available in plotly.express
 gapminder_df = px.data.gapminder()
@@ -14,14 +15,15 @@ st.title("DOOCS Viewer")
 
 
 st.sidebar.title("Settings")
-# If the user doesn't want to select which features to control, these will be used.
-default_control_features = ["Young", "Smiling", "Male"]
 
 uploaded_file = st.sidebar.file_uploader("Choose a file", type=["csv","xlsx","xls"])
 if uploaded_file is not None:
     # Can be used wherever a "file-like" object is accepted:
-    dataframe = pd.read_csv(uploaded_file)
+    dataframe = pd.read_pickle(uploaded_file)
     #st.write(dataframe)
+# If the user doesn't want to select which features to control, these will be used.
+default_control_features = ["Young", "Smiling", "Male"]
+
 
 if st.sidebar.checkbox("Show advanced options"):
     # Let the user pick which features to control with sliders.
