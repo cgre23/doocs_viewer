@@ -20,7 +20,7 @@ default_control_features = ["Young", "Smiling", "Male"]
 
 if st.sidebar.checkbox("Show advanced options"):
     # Randomly initialize feature values.
-    features = get_random_features(feature_names, seed)
+    features = ['Cell 1', 'Cell 2']
 
     # Some features are badly calibrated and biased. Removing them
     block_list = ["Cell 9 Chicane", "Cell 17 Chicane"]
@@ -34,10 +34,10 @@ if st.sidebar.checkbox("Show advanced options"):
         sorted(sanitized_features),
         default_control_features,
     )
-else:
-    features = get_random_features(feature_names, seed)
+#else:
+#    features = get_random_features(feature_names, seed)
     # Don't let the user pick feature values to control.
-    control_features = default_control_features
+#    control_features = default_control_features
 
 # Insert user-controlled values from sliders into the feature vector.
     
