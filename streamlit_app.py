@@ -16,6 +16,12 @@ st.sidebar.title("Settings")
 # If the user doesn't want to select which features to control, these will be used.
 default_control_features = ["Young", "Smiling", "Male"]
 
+uploaded_file = st.sidebar.file_uploader("Choose a file")
+if uploaded_file is not None:
+    # Can be used wherever a "file-like" object is accepted:
+    dataframe = pd.read_csv(uploaded_file)
+    st.write(dataframe)
+
 if st.sidebar.checkbox("Show advanced options"):
     # Let the user pick which features to control with sliders.
     control_features = st.sidebar.multiselect(
@@ -31,11 +37,7 @@ else:
     
 st.sidebar.slider('Time', 0, 100, 50, 5)
 
-uploaded_file = st.sidebar.file_uploader("Choose a file")
-if uploaded_file is not None:
-    # Can be used wherever a "file-like" object is accepted:
-    dataframe = pd.read_csv(uploaded_file)
-    st.write(dataframe)
+
 
 st.sidebar.title("Note")
 st.sidebar.write(
