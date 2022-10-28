@@ -1,4 +1,3 @@
 plotly
 pandas
 streamlit
-git+http://doocs-git.desy.de/cgit/doocs/library/python/pydoocs.git
