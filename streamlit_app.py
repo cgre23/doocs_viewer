@@ -73,7 +73,7 @@ animation = px.line(data_frame=dfm,
           range_y = [minValx-0.2, maxValx+0.2],
           animation_frame='Time',
           height=650)
-animation.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 100
+animation.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 200
 animation.update_layout(
     {'plot_bgcolor': 'rgba(0, 0, 0, 0)'},
     margin=dict(l=50, r=50, t=40, b=20),
