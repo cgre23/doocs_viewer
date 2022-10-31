@@ -75,7 +75,8 @@ animationX = px.line(data_frame=dfm,
           range_x = [minCell-0.2, maxCell+0.2],
           range_y = [minValx-0.2, maxValx+0.2],
           animation_frame='Time',
-          template="simple_white",
+          plot_bgcolor="white",
+          #template="simple_white",
           height=450)
 animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
 animationX.update_layout(
@@ -98,7 +99,8 @@ animationY = px.line(data_frame=dfm,
           range_x = [minCell-0.2, maxCell+0.2],
           range_y = [minValy-0.2, maxValy+0.2],
           animation_frame='Time',
-          template="simple_white",
+          plot_bgcolor="white",
+          #template="simple_white",
           height=450)
 animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
 animationY.update_layout(
