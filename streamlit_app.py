@@ -13,13 +13,6 @@ st.set_page_config(
 st.title("SASE2 Orbit Viewer")
 """This demo demonstrates SASE2 orbit visualization using DOOCS HIST data"""
 
-"st.session_state object:" , st.session_state
-
-def update_animation_speed():
-    animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = st.session_state.speed
-    animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = st.session_state.speed
-
-
 
 st.sidebar.title("Settings")
 
@@ -31,7 +24,7 @@ st.sidebar.title("Settings")
 
 if st.sidebar.checkbox("Show advanced options"):
     # Let the user pick which features to control with sliders.
-    speed = st.sidebar.number_input('Set animation speed', min_value=1, max_value=500, value=50, step=5, format=None, key='speed', help='None', on_change=update_animation_speed, label_visibility="visible")
+    speed = st.sidebar.number_input('Set animation speed', min_value=1, max_value=500, value=50, step=5, format=None, key='speed', help='None', label_visibility="visible")
     #control_features = st.sidebar.multiselect(
     #    "Exclude which cells?",
    #     ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5'],
