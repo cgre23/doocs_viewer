@@ -55,62 +55,38 @@ st.sidebar.caption(f"Streamlit version `{st.__version__}`")
 dfm = pd.read_pickle('doocs_orbit_20221021_viewer.pkl')
 minCell = dfm['Cell No'].min()
 maxCell = dfm['Cell No'].max()
-minValx = dfm['ValueX'].min()
-maxValx = dfm['ValueX'].max()
-minValy = dfm['ValueY'].min()
-maxValy = dfm['ValueY'].max()
+minValx = min(dfm[['ValueX','ValueY']].min())
+maxValx = max(dfm[['ValueX','ValueY']].max())
 dfm['Time'] = dfm.index.strftime("%H:%M:%S.%f").str[:-5]
 
 # Animation year by year basis
 
-animationX = px.line(data_frame=dfm,
+animation = px.line(data_frame=dfm,
           x= 'Cell No',
-          y = 'ValueX',
+           y = ['ValueX', 'ValueY'],
           title = 'X positions',
-          labels = {'Cell No': 'Cell', 
-                   'ValueX' : 'X.SA2.HIST'},
-          hover_name = 'Cell No',
-          color_discrete_sequence=px.colors.qualitative.Light24,
-          markers=True, 
-          range_x = [minCell-0.2, maxCell+0.2],
-          range_y = [minValx-0.2, maxValx+0.2],
-          animation_frame='Time',
-          height=450)
-animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 100
-animationX.update_layout({
-    'plot_bgcolor': 'rgba(0, 0, 0, 0)'},
-    margin=dict(l=50, r=50, t=40, b=20)
-)
-animationX.update_yaxes( 
-    showline=True, linewidth=2, linecolor='black', showgrid=True
-)
-animationX.update_xaxes( 
-    showline=True, linewidth=1, linecolor='black'
-)
-st.plotly_chart(animationX, use_container_width=True)
-
-animationY = px.line(data_frame=dfm,
-          x= 'Cell No',
-          y = 'ValueY',
-          title = 'Y positions',
-          labels = {'Cell No': 'Cell', 
-                   'ValueY' : 'Y.SA2.HIST'},
+          labels = {'Cell No': 'Cell'},
           hover_name = 'Cell No',
           color_discrete_sequence=px.colors.qualitative.G10,
           markers=True, 
           range_x = [minCell-0.2, maxCell+0.2],
-          range_y = [minValy-0.2, maxValy+0.2],
+          range_y = [minValx-0.2, maxValx+0.2],
           animation_frame='Time',
-          height=450)
-animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 100
-animationY.update_layout({
+          height=650)
+animation.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 100
+animation.update_yaxes( 
+    showline=True, linewidth=2, linecolor='black', showgrid=True
+)
+animation.update_xaxes( 
+    showline=True, linewidth=1, linecolor='black'
+)
+animation.update_layout(
+    legend_title_text='Variable',
+    yaxis_title='Position',
     'plot_bgcolor': 'rgba(0, 0, 0, 0)'},
     margin=dict(l=50, r=50, t=40, b=20)
 )
-animationY.update_yaxes( 
-    showline=True, linewidth=2, linecolor='black', showgrid=True
-)
-animationY.update_xaxes( 
-    showline=True, linewidth=1, linecolor='black'
-)
-st.plotly_chart(animationY, use_container_width=True)
+newnames = {'ValueX':'X.SA2.HIST', 'ValueY': 'Y.SA2.HIST'} # From the other post
+animation.for_each_trace(lambda t: t.update(name = newnames[t.name]))
+st.plotly_chart(animation, use_container_width=True)
+
