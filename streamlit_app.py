@@ -51,7 +51,7 @@ st.sidebar.caption(f"Streamlit version `{st.__version__}`")
 
 
 
-dataframe = pd.read_pickle('doocs_orbit_20221021_viewer.pkl')
+dfm = pd.read_pickle('doocs_orbit_20221021_viewer.pkl')
 minCell = dfm['Cell No'].min()
 maxCell = dfm['Cell No'].max()
 minValx = dfm['ValueX'].min()
