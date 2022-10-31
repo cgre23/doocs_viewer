@@ -78,8 +78,7 @@ animationX = px.line(data_frame=dfm,
           height=450)
 animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
 animationX.update_layout({
-    'plot_bgcolor': 'rgba(0, 0, 0, 0)',
-    'paper_bgcolor': 'rgba(0, 0, 0, 0)'},
+    'plot_bgcolor': 'rgba(0, 0, 0, 0)'},
     margin=dict(l=20, r=20, t=40, b=20)
 )
 animationX.update_yaxes( 
