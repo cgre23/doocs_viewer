@@ -30,11 +30,10 @@ if st.sidebar.checkbox("Show advanced options"):
         ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5', 'Cell 6', 'Cell 7', 'Cell 8', 'Cell 9', 'Cell 10'],
         ['Cell 1'], help='This is still work in progress.'
     )
-    speed = 100
-else:
+#else:
     # Don't let the user pick feature values to control.
     #control_features = default_control_features
-    speed = 100
+    #speed = 100
 
 # Insert user-controlled values from sliders into the feature vector.
     
@@ -76,7 +75,7 @@ animationX = px.line(data_frame=dfm,
           range_y = [minValx-0.2, maxValx+0.2],
           animation_frame='Time',
           height=450)
-animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
+animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 100
 animationX.update_layout({
     'plot_bgcolor': 'rgba(0, 0, 0, 0)'},
     margin=dict(l=50, r=50, t=40, b=20)
@@ -102,7 +101,7 @@ animationY = px.line(data_frame=dfm,
           range_y = [minValy-0.2, maxValy+0.2],
           animation_frame='Time',
           height=450)
-animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
+animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 100
 animationY.update_layout({
     'plot_bgcolor': 'rgba(0, 0, 0, 0)'},
     margin=dict(l=50, r=50, t=40, b=20)
