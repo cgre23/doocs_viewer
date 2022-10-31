@@ -25,12 +25,12 @@ st.sidebar.title("Settings")
 if st.sidebar.checkbox("Show advanced options"):
     # Let the user pick which features to control with sliders.
     #speed = st.sidebar.number_input('Set animation speed', min_value=1, max_value=500, value=50, step=5, format=None, key='speed', help='None', label_visibility="visible")
-    #control_features = st.sidebar.multiselect(
-    speed = 100
-    #    "Exclude which cells?",
-   #     ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5'],
-    #    ['Cell 1'],
-   # )
+    control_features = st.sidebar.multiselect(
+        "Exclude which cells?",
+        ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5', 'Cell 6', 'Cell 7', 'Cell 8', 'Cell 9', 'Cell 10'],
+        ['Cell 1'], help='This is still work in progress.'
+    )
+   speed = 100
 else:
     # Don't let the user pick feature values to control.
     #control_features = default_control_features
