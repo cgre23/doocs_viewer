@@ -55,8 +55,8 @@ st.sidebar.caption(f"Streamlit version `{st.__version__}`")
 dfm = pd.read_pickle('doocs_orbit_20221021_viewer.pkl')
 minCell = dfm['Cell No'].min()
 maxCell = dfm['Cell No'].max()
-minValx = min(dfm[['ValueX','ValueY']].min())
-maxValx = max(dfm[['ValueX','ValueY']].max())
+minVal = min(dfm[['ValueX','ValueY']].min())
+maxVal = max(dfm[['ValueX','ValueY']].max())
 dfm['Time'] = dfm.index.strftime("%H:%M:%S.%f").str[:-5]
 
 # Animation year by year basis
@@ -69,7 +69,7 @@ animation = px.line(data_frame=dfm,
           color_discrete_sequence=px.colors.qualitative.G10,
           markers=True, 
           range_x = [minCell-0.2, maxCell+0.05],
-          range_y = [minValx-0.2, maxValx+0.05],
+          range_y = [minVal-0.2, maxVal+0.05],
           animation_frame='Time',
           height=650)
 animation.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 200
