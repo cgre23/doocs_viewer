@@ -79,13 +79,13 @@ animationX = px.line(data_frame=dfm,
 animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
 animationX.update_layout({
     'plot_bgcolor': 'rgba(0, 0, 0, 0)'},
-    margin=dict(l=20, r=20, t=40, b=20)
+    margin=dict(l=50, r=50, t=40, b=20)
 )
 animationX.update_yaxes( 
     showline=True, linewidth=2, linecolor='black', showgrid=True
 )
 animationX.update_xaxes( 
-    showline=True, linewidth=2, linecolor='black'
+    showline=True, linewidth=1, linecolor='black'
 )
 st.plotly_chart(animationX, use_container_width=True)
 
@@ -103,10 +103,14 @@ animationY = px.line(data_frame=dfm,
           animation_frame='Time',
           height=450)
 animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
-animationY.update_layout(
-    margin=dict(l=20, r=20, t=40, b=20),
+animationY.update_layout({
+    'plot_bgcolor': 'rgba(0, 0, 0, 0)'},
+    margin=dict(l=50, r=50, t=40, b=20)
 )
 animationY.update_yaxes( 
-    showgrid=True
+    showline=True, linewidth=2, linecolor='black', showgrid=True
+)
+animationY.update_xaxes( 
+    showline=True, linewidth=1, linecolor='black'
 )
 st.plotly_chart(animationY, use_container_width=True)
