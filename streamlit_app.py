@@ -14,6 +14,47 @@ st.title("SASE2 Orbit Viewer")
 """This demo demonstrates SASE2 orbit visualization using DOOCS HIST data for 21.10.2022, local time."""
 
 
+st.sidebar.title("Settings")
+
+
+    # Can be used wherever a "file-like" object is accepted:
+    #st.write(dataframe)
+# If the user doesn't want to select which features to control, these will be used.
+
+
+if st.sidebar.checkbox("Show advanced options"):
+    # Let the user pick which features to control with sliders.
+    #speed = st.sidebar.number_input('Set animation speed', min_value=1, max_value=500, value=50, step=5, format=None, key='speed', help='None', label_visibility="visible")
+    st.sidebar.write(
+    """This section is still in development.
+     """
+)
+    #control_features = st.sidebar.multiselect(
+    #    "Exclude which cells?",
+    #    ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5', 'Cell 6', 'Cell 7', 'Cell 8', 'Cell 9', 'Cell 10'],
+   #     ['Cell 1'], help='This is still work in progress.'
+    #)
+#else:
+    # Don't let the user pick feature values to control.
+    #control_features = default_control_features
+    #speed = 100
+
+# Insert user-controlled values from sliders into the feature vector.
+    
+#st.sidebar.slider('Time', 0, 100, 50, 5)
+
+
+
+st.sidebar.title("Note")
+st.sidebar.write(
+    """The app is still in development.
+     """
+)
+
+st.sidebar.caption("Developed by: Christian Grech (DESY, MXL)")
+st.sidebar.caption(f"Streamlit version `{st.__version__}`")
+
+
 dfm = pd.read_pickle('doocs_orbit_20221021_viewer.pkl')
 minCell = dfm['Cell No'].min()
 maxCell = dfm['Cell No'].max()
@@ -76,40 +117,3 @@ animationY.update_xaxes(
     showline=True, linewidth=1, linecolor='black'
 )
 st.plotly_chart(animationY, use_container_width=True)
-
-
-st.sidebar.title("Settings")
-
-
-    # Can be used wherever a "file-like" object is accepted:
-    #st.write(dataframe)
-# If the user doesn't want to select which features to control, these will be used.
-
-
-if st.sidebar.checkbox("Show advanced options"):
-    # Let the user pick which features to control with sliders.
-    #speed = st.sidebar.number_input('Set animation speed', min_value=1, max_value=500, value=50, step=5, format=None, key='speed', help='None', label_visibility="visible")
-    control_features = st.sidebar.multiselect(
-        "Exclude which cells?",
-        ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5', 'Cell 6', 'Cell 7', 'Cell 8', 'Cell 9', 'Cell 10'],
-        ['Cell 1'], help='This is still work in progress.'
-    )
-#else:
-    # Don't let the user pick feature values to control.
-    #control_features = default_control_features
-    #speed = 100
-
-# Insert user-controlled values from sliders into the feature vector.
-    
-#st.sidebar.slider('Time', 0, 100, 50, 5)
-
-
-
-st.sidebar.title("Note")
-st.sidebar.write(
-    """The app is still in development.
-     """
-)
-
-st.sidebar.caption("Developed by: Christian Grech (DESY, MXL)")
-st.sidebar.caption(f"Streamlit version `{st.__version__}`")
