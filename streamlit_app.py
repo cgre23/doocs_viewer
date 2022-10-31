@@ -63,8 +63,7 @@ dfm['Time'] = dfm.index.strftime("%H:%M:%S.%f").str[:-5]
 
 animation = px.line(data_frame=dfm,
           x= 'Cell No',
-           y = ['ValueX', 'ValueY'],
-          title = 'X positions',
+          y = ['ValueX', 'ValueY'],
           labels = {'Cell No': 'Cell'},
           hover_name = 'Cell No',
           color_discrete_sequence=px.colors.qualitative.G10,
