@@ -84,7 +84,7 @@ animation.update_layout(
     legend_title_text='Variable',
     yaxis_title='Position',
     {'plot_bgcolor': 'rgba(0, 0, 0, 0)'},
-    margin=dict(l=50, r=50, t=40, b=20)
+    margin=dict(l=50, r=50, t=40, b=20),
 )
 newnames = {'ValueX':'X.SA2.HIST', 'ValueY': 'Y.SA2.HIST'} # From the other post
 animation.for_each_trace(lambda t: t.update(name = newnames[t.name]))
