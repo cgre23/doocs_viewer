@@ -64,7 +64,6 @@ dfm['Time'] = dfm.index.strftime("%H:%M:%S.%f").str[:-5]
 animation = px.line(data_frame=dfm,
           x= 'Cell No',
           y = ['ValueX', 'ValueY'],
-          labels = {'Cell No': 'Cell'},
           hover_name = 'Cell No',
           color_discrete_sequence=px.colors.qualitative.G10,
           markers=True, 
@@ -78,6 +77,7 @@ animation.update_layout(
     margin=dict(l=50, r=50, t=40, b=20),
     legend_title_text='Variable',
     yaxis_title='Position',
+    xaxis_title='Cell'
 )
 animation.update_yaxes( 
     showline=True, linewidth=2, linecolor='black', showgrid=True
