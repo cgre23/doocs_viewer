@@ -27,12 +27,11 @@ st.sidebar.title("Settings")
     # Can be used wherever a "file-like" object is accepted:
     #st.write(dataframe)
 # If the user doesn't want to select which features to control, these will be used.
-default_control_features = ["Young", "Smiling", "Male"]
 
 
 if st.sidebar.checkbox("Show advanced options"):
     # Let the user pick which features to control with sliders.
-    speed = st.number_input('Set animation speed', min_value=1, max_value=500, value=10, step=5, format=None, key='speed', help='None', on_change=update_animation_speed, label_visibility="visible")
+    speed = st.sidebar.number_input('Set animation speed', min_value=1, max_value=500, value=50, step=5, format=None, key='speed', help='None', on_change=update_animation_speed, label_visibility="visible")
     #control_features = st.sidebar.multiselect(
     #    "Exclude which cells?",
    #     ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5'],
@@ -41,7 +40,7 @@ if st.sidebar.checkbox("Show advanced options"):
 else:
     # Don't let the user pick feature values to control.
     #control_features = default_control_features
-    speed = 10
+    speed = 50
 
 # Insert user-controlled values from sliders into the feature vector.
     
@@ -57,7 +56,6 @@ st.sidebar.write(
 
 st.sidebar.caption("Developed by: Christian Grech (DESY, MXL)")
 st.sidebar.caption(f"Streamlit version `{st.__version__}`")
-
 
 
 dfm = pd.read_pickle('doocs_orbit_20221021_viewer.pkl')
@@ -85,7 +83,9 @@ animationX = px.line(data_frame=dfm,
           animation_frame='Time',
           height=450)
 animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
-
+animationX.update_layout(
+    margin=dict(l=20, r=20, t=40, b=20),
+)
 st.plotly_chart(animationX, use_container_width=True)
 
 animationY = px.line(data_frame=dfm,
@@ -102,5 +102,7 @@ animationY = px.line(data_frame=dfm,
           animation_frame='Time',
           height=450)
 animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
-
+animationY.update_layout(
+    margin=dict(l=20, r=20, t=40, b=20),
+)
 st.plotly_chart(animationY, use_container_width=True)
