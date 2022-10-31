@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 st.title("SASE2 Orbit Viewer")
-"""This demo demonstrates SASE2 orbit visualization using DOOCS HIST data"""
+"""This demo demonstrates SASE2 orbit visualization using DOOCS HIST data for 21.10.2022, local time."""
 
 
 st.sidebar.title("Settings")
