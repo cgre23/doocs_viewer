@@ -10,8 +10,15 @@ st.set_page_config(
     page_title="DOOCS Viewer", page_icon="⬇", layout="centered"
 )
 
-st.title("DOOCS Viewer")
+st.title("SASE2 Orbit Viewer")
 """This demo demonstrates SASE2 orbit visualization using DOOCS HIST data"""
+
+"st.session_state object:" , st.session_state
+
+def update_animation_speed():
+    animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = st.session_state.speed
+    animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = st.session_state.speed
+
 
 
 st.sidebar.title("Settings")
@@ -25,14 +32,16 @@ default_control_features = ["Young", "Smiling", "Male"]
 
 if st.sidebar.checkbox("Show advanced options"):
     # Let the user pick which features to control with sliders.
-    control_features = st.sidebar.multiselect(
-        "Exclude which cells?",
-        ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5'],
-        ['Cell 1'],
-    )
+    speed = st.number_input('Set animation speed', min_value=1, max_value=500, value=10, step=5, format=None, key='speed', help='None', on_change=update_animation_speed, label_visibility="visible")
+    #control_features = st.sidebar.multiselect(
+    #    "Exclude which cells?",
+   #     ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5'],
+    #    ['Cell 1'],
+   # )
 else:
     # Don't let the user pick feature values to control.
-    control_features = default_control_features
+    #control_features = default_control_features
+    speed = 10
 
 # Insert user-controlled values from sliders into the feature vector.
     
@@ -65,7 +74,7 @@ dfm['Time'] = dfm.index.strftime("%H:%M:%S.%f").str[:-5]
 animationX = px.line(data_frame=dfm,
           x= 'Cell No',
           y = 'ValueX',
-          title = 'Orbit X positions',
+          title = 'X positions',
           labels = {'Cell No': 'Cell', 
                    'ValueX' : 'X.SA2.HIST'},
           hover_name = 'Cell No',
@@ -74,16 +83,15 @@ animationX = px.line(data_frame=dfm,
           range_x = [minCell-0.2, maxCell+0.2],
           range_y = [minValx-0.2, maxValx+0.2],
           animation_frame='Time',
-          height=550)
-animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 10
+          height=450)
+animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
 
 st.plotly_chart(animationX, use_container_width=True)
-
 
 animationY = px.line(data_frame=dfm,
           x= 'Cell No',
           y = 'ValueY',
-          title = 'Orbit Y positions',
+          title = 'Y positions',
           labels = {'Cell No': 'Cell', 
                    'ValueY' : 'Y.SA2.HIST'},
           hover_name = 'Cell No',
@@ -92,7 +100,7 @@ animationY = px.line(data_frame=dfm,
           range_x = [minCell-0.2, maxCell+0.2],
           range_y = [minValy-0.2, maxValy+0.2],
           animation_frame='Time',
-          height=550)
-animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 10
+          height=450)
+animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
 
 st.plotly_chart(animationY, use_container_width=True)
