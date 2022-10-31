@@ -30,7 +30,7 @@ if st.sidebar.checkbox("Show advanced options"):
         ['Cell 1', 'Cell 2', 'Cell 3', 'Cell 4', 'Cell 5', 'Cell 6', 'Cell 7', 'Cell 8', 'Cell 9', 'Cell 10'],
         ['Cell 1'], help='This is still work in progress.'
     )
-   speed = 100
+    speed = 100
 else:
     # Don't let the user pick feature values to control.
     #control_features = default_control_features
