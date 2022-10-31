@@ -68,8 +68,8 @@ animation = px.line(data_frame=dfm,
           hover_name = 'Cell No',
           color_discrete_sequence=px.colors.qualitative.G10,
           markers=True, 
-          range_x = [minCell-0.2, maxCell+0.2],
-          range_y = [minValx-0.2, maxValx+0.2],
+          range_x = [minCell-0.2, maxCell+0.05],
+          range_y = [minValx-0.2, maxValx+0.05],
           animation_frame='Time',
           height=650)
 animation.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = 200
