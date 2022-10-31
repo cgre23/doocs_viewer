@@ -74,10 +74,14 @@ animationX = px.line(data_frame=dfm,
           range_x = [minCell-0.2, maxCell+0.2],
           range_y = [minValx-0.2, maxValx+0.2],
           animation_frame='Time',
+          template="simple_white",
           height=450)
 animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
 animationX.update_layout(
     margin=dict(l=20, r=20, t=40, b=20),
+)
+animationX.update_yaxes( 
+    showgrid=True
 )
 st.plotly_chart(animationX, use_container_width=True)
 
@@ -93,9 +97,13 @@ animationY = px.line(data_frame=dfm,
           range_x = [minCell-0.2, maxCell+0.2],
           range_y = [minValy-0.2, maxValy+0.2],
           animation_frame='Time',
+          template="simple_white",
           height=450)
 animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
 animationY.update_layout(
     margin=dict(l=20, r=20, t=40, b=20),
+)
+animationY.update_yaxes( 
+    showgrid=True
 )
 st.plotly_chart(animationY, use_container_width=True)
