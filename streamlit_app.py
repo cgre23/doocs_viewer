@@ -7,7 +7,7 @@ import pandas as pd
 gapminder_df = px.data.gapminder()
 
 st.set_page_config(
-    page_title="DOOCS Viewer", page_icon="⬇", layout="centered"
+    page_title="DOOCS Viewer", layout="wide"
 )
 
 st.title("SASE2 Orbit Viewer")
