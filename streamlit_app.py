@@ -82,7 +82,10 @@ animationX.update_layout({
     margin=dict(l=20, r=20, t=40, b=20)
 )
 animationX.update_yaxes( 
-    showgrid=True
+    showline=True, linewidth=2, linecolor='black', showgrid=True
+)
+animationX.update_xaxes( 
+    showline=True, linewidth=2, linecolor='black'
 )
 st.plotly_chart(animationX, use_container_width=True)
 
