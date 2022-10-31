@@ -75,11 +75,11 @@ animationX = px.line(data_frame=dfm,
           range_x = [minCell-0.2, maxCell+0.2],
           range_y = [minValx-0.2, maxValx+0.2],
           animation_frame='Time',
-          plot_bgcolor="white",
-          #template="simple_white",
           height=450)
 animationX.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
 animationX.update_layout(
+    'plot_bgcolor': 'rgba(0, 0, 0, 0)',
+    'paper_bgcolor': 'rgba(0, 0, 0, 0)',
     margin=dict(l=20, r=20, t=40, b=20),
 )
 animationX.update_yaxes( 
@@ -99,8 +99,6 @@ animationY = px.line(data_frame=dfm,
           range_x = [minCell-0.2, maxCell+0.2],
           range_y = [minValy-0.2, maxValy+0.2],
           animation_frame='Time',
-          plot_bgcolor="white",
-          #template="simple_white",
           height=450)
 animationY.layout.updatemenus[0].buttons[0].args[1]['frame']['duration'] = speed
 animationY.update_layout(
